@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random</title>
+</head>
+<body>
+    <div id="quote-container">
+        <h1>Loading Quote...</h1>
+    </div>
+
+    <button onclick="fetchAndDisplay()">Get Random Quote</button>
+
+    <script>
+    function fetchAndDisplay(){
+    fetch('https://animechan.xyz/api/random')
+    .then(response => response.json())
+    .then(quote => {
+        const quoteContainer = document.getElementById('quote-container')
+        quoteContainer.innerHTML = `
+        <h1>Anime: ${quote.anime}</h1>
+        <p>Character: ${quote.character}</p>
+        <p>Quote: ${quote.quote}</p>`;
+        
+    })
+    }
+    </script>
+</body>
+</html>
